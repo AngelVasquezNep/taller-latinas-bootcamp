@@ -35,10 +35,21 @@ body {
   --border-radius-size: 0.5rem;
 }
 
+#app {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 /* Commons */
 .Container {
   max-width: 50rem;
   margin: 0 auto;
+}
+
+.Fake-dark-mode {
+  color: 
 }
 
 /* List */
@@ -46,7 +57,7 @@ body {
 .Contacts {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  grid-template-columns: 1fr;
 }
 
 
@@ -55,7 +66,7 @@ body {
 .Contact {
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .Contact--image {
@@ -85,6 +96,11 @@ body {
 
 .Contact--details-link {
   color: var(--pink-lavender);
+}
+
+.Fake-dark-mode {
+  color: var(--uranian-blue); 
+  background-color: rgb(17, 17, 17);
 }
 
 @media screen and (max-width: 542px) {
