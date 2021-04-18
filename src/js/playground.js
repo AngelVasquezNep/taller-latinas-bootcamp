@@ -1,4 +1,11 @@
-import { colorElementRed, updateElementStyles } from "./utils.js";
+import {
+  colorElementRed,
+  updateElementStyles,
+  transformRawContacts,
+  Contact,
+  render,
+} from "./utils.js";
+import rawContacts from "./rawContacts.js";
 
 /** ---------------------------------------------------------------------
  *
@@ -44,3 +51,22 @@ import { colorElementRed, updateElementStyles } from "./utils.js";
 // }
 
 // document.addEventListener("keydown", keydownHandler);
+
+/** ---------------------------------------------------------------------
+ *
+ * Arrays and DOM manipulation
+ *
+ */
+
+// const contactsList = document.querySelector(".Contacts");
+// // console.log(contactsList);
+
+// function renderContacts(contacts) {
+//   contacts.forEach((contact) => {
+//     render(contactsList, Contact(contact));
+//   });
+// }
+
+// const contacts = transformRawContacts(rawContacts);
+
+// renderContacts(contacts);
