@@ -1,0 +1,8 @@
+{
+  "name": "latinas-bootcamp",
+  "version": "0.1.0",
+  "description": "A JS project to learn about Arrays, DOM manipulation, Asynchronism and more",
+  "main": "index.js",
+  "author": "Angelito <angel.vasquez.unam@gmail.com> (https://github.com/AngelVasquezNep)",
+  "license": "MIT"
+}
