@@ -69,11 +69,11 @@ function contactTemplate(contact) {
 export function Contact(contact) {
   // Create simple div
   const div = document.createElement("div");
-  console.log(div);
+  // console.log(div);
 
   // Create a string contact template version
   const contactTemplateString = contactTemplate(contact);
-  console.log(contactTemplateString);
+  // console.log(contactTemplateString);
 
   // Insert string contact template version into our div
   div.innerHTML = contactTemplateString;
@@ -81,7 +81,7 @@ export function Contact(contact) {
   // Get firstChild -> <section class="Contact"...
   const contactElement = div.firstElementChild;
 
-  console.log(contactElement);
+  // console.log(contactElement);
   return contactElement;
 }
 

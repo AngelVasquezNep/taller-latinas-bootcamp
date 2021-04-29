@@ -11,6 +11,15 @@
   */
 }
 
+*::selection {
+  /*
+    DOC: https://developer.mozilla.org/en-US/docs/Web/CSS/::selection
+    Nice example: https://css-tricks.com/almanac/selectors/s/selection/
+  */
+  background-color: var(--primary-color);
+  color: white;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -25,11 +34,11 @@ body {
   */
 
   /* COLORS */
-  --pink-lavender: #cdb4dbff;
-  --orchid-pink: #ffc8ddff;
-  --nadeshiko-pink: #ffafccff;
-  --uranian-blue: #bde0feff;
-  --baby-blue-eyes: #a2d2ffff;
+  --primary-color: #f72585;
+  --text-color: #b5179e;
+  --text-light-color: #4cc9f0;
+  --gray-color: #333533;
+  --dark-color: #22223b;
 
   /* Measurements */
   --border-radius-size: 0.5rem;
@@ -42,8 +51,28 @@ body {
   flex-direction: column;
 }
 
+.Header--Searchs {
+  background-color: transparent;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  border: 1px solid var(--primary-color);
+  border-radius: 0.2rem;
+  padding: 0.3rem;
+  outline: none;
+  color: var(--text-color);
+  caret-color: var(--text-color);
+  transition: all 0.2s;
+}
+
+.Header--Searchs:focus,
+.Header--Searchs:active,
+.Header--Searchs:hover {
+  box-shadow: 0 0 0px 2px var(--primary-color);
+}
+
 /* Commons */
 .Container {
+  width: 100%;
   max-width: 50rem;
   margin: 0 auto;
 }
@@ -76,6 +105,7 @@ body {
   width: 5rem;
   height: 5rem;
   z-index: 0;
+  background-color: var(--text-color);
 }
 
 .Contact--name {
@@ -87,17 +117,19 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   padding: 0.5rem;
-  border-right: 0.2rem solid var(--orchid-pink);
-  border-bottom: 0.2rem solid var(--orchid-pink);
+  border-right: 0.2rem solid var(--primary-color);
+  border-bottom: 0.2rem solid var(--primary-color);
 }
 
 .Contact--details-link {
-  color: var(--pink-lavender);
+  color: var(--text-color);
 }
-
+.Fake-light-mode {
+  color: var(--gray-color);
+}
 .Fake-dark-mode {
-  color: var(--uranian-blue); 
-  background-color: rgb(17, 17, 17);
+  color: var(--text-light-color); 
+  background-color: #22223b;
 }
 
 @media screen and (max-width: 542px) {
