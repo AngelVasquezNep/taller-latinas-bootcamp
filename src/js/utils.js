@@ -26,12 +26,12 @@ function contactTemplate(contact) {
       </picture>
 
       <div class="Contact--details">
-        <a class="Contact--details-link" href="tel:${contact.phone}"
-          >${contact.phone}</a
-        >
-        <a class="Contact--details-link" href="mailto:${contact.email}"
-          >${contact.email}</a
-        >
+        <a class="Contact--details-link" href="tel:${contact.phone}">
+          ${contact.phone}
+        </a>
+        <a class="Contact--details-link" href="mailto:${contact.email}">
+          ${contact.email}
+        </a>
       </div>
     </section>
   `;
@@ -42,7 +42,7 @@ function contactTemplate(contact) {
  * @param {Object} contact
  * @returns {Element}
  */
-export function Contact(contact) {
+export function ContactElement(contact) {
   // Create simple div
   const div = document.createElement("div");
   // console.log(div);

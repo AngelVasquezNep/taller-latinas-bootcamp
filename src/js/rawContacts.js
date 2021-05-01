@@ -1,3 +1,8 @@
+/**
+ * "Rick and Morty characters"
+ * API documentation https://rickandmortyapi.com
+ */
+
 const rawContacts = [
   {
     id: 1,
