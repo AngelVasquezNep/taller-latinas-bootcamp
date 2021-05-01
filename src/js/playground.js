@@ -1,73 +1,9 @@
 import {
-  colorElementRed,
-  updateElementStyles,
   transformRawContacts,
   Contact,
   render,
 } from "./utils.js";
 import rawContacts from "./rawContacts.js";
-
-/** ---------------------------------------------------------------------
- *
- * Styles manipulation
- *
- */
-
-// colorElementRed("Angelito");
-
-// updateElementStyles(".Contacts .Contact", {
-//   border: "2px solid green",
-// });
-
-/** ---------------------------------------------------------------------
- *
- * Make fale dark mode
- *
- */
-
-// const appContainer = document.getElementById("app");
-
-// const KEY_CODES = {
-//   D: 68,
-//   L: 76,
-//   G: 71,
-//   C: 67,
-// };
-
-// function keydownHandler(event) {
-//   // classList - https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
-
-//   console.log(event);
-
-//   if (event.keyCode === KEY_CODES.D) {
-//     // Make dark mode
-//     appContainer.classList.add('Fake-dark-mode')
-//     appContainer.classList.remove('Fake-light-mode')
-//   }
-
-//   if (event.keyCode === KEY_CODES.L) {
-//     // Remove dark mode
-//     appContainer.classList.add('Fake-light-mode')
-//     appContainer.classList.remove('Fake-dark-mode')
-//   }
-
-//   if (event.keyCode === KEY_CODES.G) {
-//     // Green Border
-//     updateElementStyles(".Contacts .Contact", {
-//       border: "2px solid green",
-//     });
-//   }
-
-//   if (event.keyCode === KEY_CODES.C) {
-//     // Clean
-//     updateElementStyles(".Contacts .Contact", {
-//       border: "initial",
-//     });
-//   }
-// }
-
-// document.addEventListener("keydown", keydownHandler);
-
 
 /** ---------------------------------------------------------------------
  *

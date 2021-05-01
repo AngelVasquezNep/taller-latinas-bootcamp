@@ -124,6 +124,9 @@ body {
 .Contact--details-link {
   color: var(--text-color);
 }
+
+/* Dark and Light mode */
+
 .Fake-light-mode {
   color: var(--gray-color);
 }
