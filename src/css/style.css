@@ -51,7 +51,7 @@ body {
   flex-direction: column;
 }
 
-.Header--Searchs {
+.Header--Searches {
   background-color: transparent;
   margin-bottom: 1.5rem;
   width: 100%;
@@ -64,9 +64,9 @@ body {
   transition: all 0.2s;
 }
 
-.Header--Searchs:focus,
-.Header--Searchs:active,
-.Header--Searchs:hover {
+.Header--Searches:focus,
+.Header--Searches:active,
+.Header--Searches:hover {
   box-shadow: 0 0 0px 2px var(--primary-color);
 }
 

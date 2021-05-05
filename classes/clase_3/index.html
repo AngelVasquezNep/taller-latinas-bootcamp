@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 3</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        /*
+        border-box: tells the browser to account for any border and padding in
+        the values you specify for an element's width and height. If you set
+        an element's width to 100 pixels, that 100 pixels will include any
+        border or padding you added, and the content box will shrink to absorb
+        that extra width.
+      
+        DOC: https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+      */
+      }
+
+      *::selection {
+        /*
+        DOC: https://developer.mozilla.org/en-US/docs/Web/CSS/::selection
+        Nice example: https://css-tricks.com/almanac/selectors/s/selection/
+      */
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+
+        font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
+
+      :root {
+        /*
+        We can use CSS custom properties
+        DOC: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+      */
+
+        /* COLORS */
+        --primary-color: #f72585;
+        --text-color: #b5179e;
+        --text-light-color: #4cc9f0;
+        --gray-color: #333533;
+        --dark-color: #22223b;
+
+        /* Measurements */
+        --border-radius-size: 0.5rem;
+      }
+
+      #app {
+        width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .Header--Searches {
+        background-color: transparent;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        border: 1px solid var(--primary-color);
+        border-radius: 0.2rem;
+        padding: 0.3rem;
+        outline: none;
+        color: var(--text-color);
+        caret-color: var(--text-color);
+        transition: all 0.2s;
+      }
+
+      .Header--Searches:focus,
+      .Header--Searches:active,
+      .Header--Searches:hover {
+        box-shadow: 0 0 0px 2px var(--primary-color);
+      }
+
+      /* Commons */
+      .Container {
+        width: 100%;
+        max-width: 50rem;
+        margin: 0 auto;
+      }
+
+      /* List */
+
+      .Contacts {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr;
+      }
+
+      /* Contact */
+
+      .Contact {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .Contact--image {
+        display: flex;
+        align-items: center;
+        width: 25rem;
+      }
+
+      .Contact--image img {
+        width: 5rem;
+        height: 5rem;
+        z-index: 0;
+        background-color: var(--text-color);
+      }
+
+      .Contact--name {
+        padding-left: 0.5rem;
+      }
+
+      .Contact--details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0.5rem;
+        border-right: 0.2rem solid var(--primary-color);
+        border-bottom: 0.2rem solid var(--primary-color);
+      }
+
+      .Contact--details-link {
+        color: var(--text-color);
+      }
+
+      /* Dark and Light mode */
+
+      .Fake-light-mode {
+        color: var(--gray-color);
+      }
+      .Fake-dark-mode {
+        color: var(--text-light-color);
+        background-color: #22223b;
+      }
+
+      @media screen and (max-width: 542px) {
+        .Contact,
+        .Contact--image {
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          width: 100%;
+        }
+
+        .Contact--details {
+          border-right: initial;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="Fake-light-mode">
+      <div class="Container">
+        <header class="Header">
+          <h1 class="Header--Title">Latinas Bootcamp: Proyecto de Agenda</h1>
+          <input
+            class="Header--Searches"
+            type="search"
+            name="search"
+            id="header-search"
+          />
+        </header>
+
+        <section class="Contacts">
+          <section class="Contact" id="Angelito">
+            <picture class="Contact--image">
+              <img
+                src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+                alt="Angelito"
+                height="5rem"
+                width="5rem"
+              />
+              <figcaption class="Contact--name">Angelito</figcaption>
+            </picture>
+
+            <div class="Contact--details">
+              <a class="Contact--details-link" href="tel:+5544447777"
+                >5544447777</a
+              >
+              <a class="Contact--details-link" href="mailto:angelito@me.com"
+                >angelito@me.com</a
+              >
+            </div>
+          </section>
+
+          <section class="Contact" id="Angelito_2">
+            <picture class="Contact--image">
+              <img
+                src="https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+                alt="Angelito"
+                height="5rem"
+                width="5rem"
+              />
+              <figcaption class="Contact--name">Angelito 2</figcaption>
+            </picture>
+
+            <div class="Contact--details">
+              <a class="Contact--details-link" href="tel:+5544447777"
+                >5544447777</a
+              >
+              <a class="Contact--details-link" href="mailto:angelito@me.com"
+                >angelito@me.com</a
+              >
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      /*
+       * Clase 3
+       */
+
+      /*
+       *
+       * DATOS FAKE
+       *
+       */
+
+      /**
+       * "Rick and Morty characters"
+       * API documentation https://rickandmortyapi.com
+       */
+
+      const rawContacts = [
+        {
+          id: 1,
+          name: "Rick Sanchez",
+          status: "Alive",
+          species: "Human",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "Earth (C-137)",
+            url: "https://rickandmortyapi.com/api/location/1",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+          url: "https://rickandmortyapi.com/api/character/1",
+          created: "2017-11-04T18:48:46.250Z",
+        },
+        {
+          id: 2,
+          name: "Morty Smith",
+          status: "Alive",
+          species: "Human",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "Earth (C-137)",
+            url: "https://rickandmortyapi.com/api/location/1",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+          url: "https://rickandmortyapi.com/api/character/2",
+          created: "2017-11-04T18:50:21.651Z",
+        },
+        {
+          id: 3,
+          name: "Summer Smith",
+          status: "Alive",
+          species: "Human",
+          type: "",
+          gender: "Female",
+          origin: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/3.jpeg",
+          url: "https://rickandmortyapi.com/api/character/3",
+          created: "2017-11-04T19:09:56.428Z",
+        },
+        {
+          id: 4,
+          name: "Beth Smith",
+          status: "Alive",
+          species: "Human",
+          type: "",
+          gender: "Female",
+          origin: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/4.jpeg",
+          url: "https://rickandmortyapi.com/api/character/4",
+          created: "2017-11-04T19:22:43.665Z",
+        },
+        {
+          id: 5,
+          name: "Jerry Smith",
+          status: "Alive",
+          species: "Human",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/5.jpeg",
+          url: "https://rickandmortyapi.com/api/character/5",
+          created: "2017-11-04T19:26:56.301Z",
+        },
+        {
+          id: 6,
+          name: "Abadango Cluster Princess",
+          status: "Alive",
+          species: "Alien",
+          type: "",
+          gender: "Female",
+          origin: {
+            name: "Abadango",
+            url: "https://rickandmortyapi.com/api/location/2",
+          },
+          location: {
+            name: "Abadango",
+            url: "https://rickandmortyapi.com/api/location/2",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/6.jpeg",
+          url: "https://rickandmortyapi.com/api/character/6",
+          created: "2017-11-04T19:50:28.250Z",
+        },
+        {
+          id: 7,
+          name: "Abradolf Lincler",
+          status: "unknown",
+          species: "Human",
+          type: "Genetic experiment",
+          gender: "Male",
+          origin: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          location: {
+            name: "Testicle Monster Dimension",
+            url: "https://rickandmortyapi.com/api/location/21",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/7.jpeg",
+          url: "https://rickandmortyapi.com/api/character/7",
+          created: "2017-11-04T19:59:20.523Z",
+        },
+        {
+          id: 8,
+          name: "Adjudicator Rick",
+          status: "Dead",
+          species: "Human",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "Citadel of Ricks",
+            url: "https://rickandmortyapi.com/api/location/3",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/8.jpeg",
+          url: "https://rickandmortyapi.com/api/character/8",
+          created: "2017-11-04T20:03:34.737Z",
+        },
+        {
+          id: 9,
+          name: "Agency Director",
+          status: "Dead",
+          species: "Human",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/9.jpeg",
+          url: "https://rickandmortyapi.com/api/character/9",
+          created: "2017-11-04T20:06:54.976Z",
+        },
+        {
+          id: 10,
+          name: "Alan Rails",
+          status: "Dead",
+          species: "Human",
+          type: "Superhuman (Ghost trains summoner)",
+          gender: "Male",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "Worldender's lair",
+            url: "https://rickandmortyapi.com/api/location/4",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/10.jpeg",
+          url: "https://rickandmortyapi.com/api/character/10",
+          created: "2017-11-04T20:19:09.017Z",
+        },
+        {
+          id: 11,
+          name: "Albert Einstein",
+          status: "Dead",
+          species: "Human",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "Earth (C-137)",
+            url: "https://rickandmortyapi.com/api/location/1",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/11.jpeg",
+          url: "https://rickandmortyapi.com/api/character/11",
+          created: "2017-11-04T20:20:20.965Z",
+        },
+        {
+          id: 12,
+          name: "Alexander",
+          status: "Dead",
+          species: "Human",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "Earth (C-137)",
+            url: "https://rickandmortyapi.com/api/location/1",
+          },
+          location: {
+            name: "Anatomy Park",
+            url: "https://rickandmortyapi.com/api/location/5",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/12.jpeg",
+          url: "https://rickandmortyapi.com/api/character/12",
+          created: "2017-11-04T20:32:33.144Z",
+        },
+        {
+          id: 13,
+          name: "Alien Googah",
+          status: "unknown",
+          species: "Alien",
+          type: "",
+          gender: "unknown",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/13.jpeg",
+          url: "https://rickandmortyapi.com/api/character/13",
+          created: "2017-11-04T20:33:30.779Z",
+        },
+        {
+          id: 14,
+          name: "Alien Morty",
+          status: "unknown",
+          species: "Alien",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "Citadel of Ricks",
+            url: "https://rickandmortyapi.com/api/location/3",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/14.jpeg",
+          url: "https://rickandmortyapi.com/api/character/14",
+          created: "2017-11-04T20:51:31.373Z",
+        },
+        {
+          id: 15,
+          name: "Alien Rick",
+          status: "unknown",
+          species: "Alien",
+          type: "",
+          gender: "Male",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "Citadel of Ricks",
+            url: "https://rickandmortyapi.com/api/location/3",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/15.jpeg",
+          url: "https://rickandmortyapi.com/api/character/15",
+          created: "2017-11-04T20:56:13.215Z",
+        },
+        {
+          id: 16,
+          name: "Amish Cyborg",
+          status: "Dead",
+          species: "Alien",
+          type: "Parasite",
+          gender: "Male",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "Earth (Replacement Dimension)",
+            url: "https://rickandmortyapi.com/api/location/20",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/16.jpeg",
+          url: "https://rickandmortyapi.com/api/character/16",
+          created: "2017-11-04T21:12:45.235Z",
+        },
+        {
+          id: 17,
+          name: "Annie",
+          status: "Alive",
+          species: "Human",
+          type: "",
+          gender: "Female",
+          origin: {
+            name: "Earth (C-137)",
+            url: "https://rickandmortyapi.com/api/location/1",
+          },
+          location: {
+            name: "Anatomy Park",
+            url: "https://rickandmortyapi.com/api/location/5",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/17.jpeg",
+          url: "https://rickandmortyapi.com/api/character/17",
+          created: "2017-11-04T22:21:24.481Z",
+        },
+        {
+          id: 18,
+          name: "Antenna Morty",
+          status: "Alive",
+          species: "Human",
+          type: "Human with antennae",
+          gender: "Male",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "Citadel of Ricks",
+            url: "https://rickandmortyapi.com/api/location/3",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/18.jpeg",
+          url: "https://rickandmortyapi.com/api/character/18",
+          created: "2017-11-04T22:25:29.008Z",
+        },
+        {
+          id: 19,
+          name: "Antenna Rick",
+          status: "unknown",
+          species: "Human",
+          type: "Human with antennae",
+          gender: "Male",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "unknown",
+            url: "",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/19.jpeg",
+          url: "https://rickandmortyapi.com/api/character/19",
+          created: "2017-11-04T22:28:13.756Z",
+        },
+        {
+          id: 20,
+          name: "Ants in my Eyes Johnson",
+          status: "unknown",
+          species: "Human",
+          type: "Human with ants in his eyes",
+          gender: "Male",
+          origin: {
+            name: "unknown",
+            url: "",
+          },
+          location: {
+            name: "Interdimensional Cable",
+            url: "https://rickandmortyapi.com/api/location/6",
+          },
+          image: "https://rickandmortyapi.com/api/character/avatar/20.jpeg",
+          url: "https://rickandmortyapi.com/api/character/20",
+          created: "2017-11-04T22:34:53.659Z",
+        },
+      ];
+
+      /*
+       *
+       * UTILS
+       *
+       */
+
+      /*
+        * Template literals (backticks)
+        * documentation: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
+        *
+        * Example:
+            function sayHi(name) {
+              console.log(`Hi ${name}`)                     // Using template literals
+              console.log('Hi ' + name)                     // Without template literals
+            }
+            function saySumResult(a, b) {
+              console.log(`${a} + ${b} = ${a + b}`)        // Using template literals
+              console.log(a + " + " + b + " = " + (a + b)) // Without template literals
+            }
+
+            sayHi("Angelito")
+            saySumResult(3, 5)
+        *
+        */
+
+      function transformRawContacts(rawContacts) {
+        const contacts = rawContacts.map((contact) => {
+          return {
+            id: `contact_${contact.id}`,
+            img: contact.image,
+            name: contact.name,
+            email: contact.name.replace(/ /g, "") + "@test.com",
+            phone: 5544449999,
+          };
+        });
+
+        return contacts;
+      }
+
+      const angelitoContactExample = {
+        id: "contact_3",
+        img: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+        name: "Angelito desde clase 3",
+        email: "Angelitodesdeclase3@test.com",
+        phone: 5544449999,
+      };
+
+      function contactTemplate(contact) {
+        return `
+        <section class="Contact" id="${contact.id}">
+          <picture class="Contact--image">
+            <img
+              src="${contact.img}"
+              alt="${contact.name}"
+              height="5rem"
+              width="5rem"
+            />
+            <figcaption class="Contact--name">${contact.name}</figcaption>
+          </picture>
+    
+          <div class="Contact--details">
+            <a class="Contact--details-link" href="tel:${contact.phone}">
+              ${contact.phone}
+            </a>
+            <a class="Contact--details-link" href="mailto:${contact.email}">
+              ${contact.email}
+            </a>
+          </div>
+        </section>
+      `;
+      }
+
+      function createContactElement(contact) {
+        /* Create simple div */
+        const div = document.createElement("div");
+
+        /* Create a string contact template version */
+        const contactTemplateString = contactTemplate(contact);
+        console.log(contactTemplateString);
+
+        /* Insert string contact template version into our div */
+        div.innerHTML = contactTemplateString;
+        console.log("div ", div);
+
+        /* Get firstChild -> <section class="Contact"... */
+        const contactElement = div.firstElementChild;
+
+        console.log("contactElement", contactElement);
+        return contactElement;
+      }
+
+      /*
+       *
+       *  TALLER
+       *
+       */
+
+      /** ---------------------------------------------------------------------
+       *
+       * Arrays and DOM manipulation
+       *
+       */
+
+      /**
+       *
+       * Insert nodes at DOM tree, examples
+       *
+       */
+
+      /* Get section.Contacts element*/
+      const ContactsDiv = document.querySelector(".Contacts");
+      console.log(ContactsDiv);
+
+      /* Create a simple tag p with content */
+      const p = document.createElement("p");
+      p.innerText = "Hola";
+
+      ContactsDiv.appendChild(p);
+
+      /**
+       * Can I insert a div with HTML content?
+       */
+
+      const simpleDiv = document.createElement("div");
+      /* Template literals: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals */
+      simpleDiv.innerHTML = `
+        <p>
+          <strong>HOLA...</strong> :D
+        </p>
+      `;
+
+      ContactsDiv.appendChild(simpleDiv);
+
+      /**
+       * Add Contacts from list
+       */
+
+      const contactsList = document.querySelector(".Contacts");
+      console.log(contactsList);
+
+      function renderContacts(contacts) {
+        contacts.forEach((contact) => {
+          const contactElement = createContactElement(contact);
+          contactsList.appendChild(contactElement);
+        });
+      }
+
+      const contacts = transformRawContacts(rawContacts);
+
+      renderContacts(contacts);
+
+      /**
+       * Filter Names - Arrays and DOM manipulation
+       */
+
+      const headerSearch = document.getElementById("header-search");
+
+      headerSearch.addEventListener("input", (event) => {
+        /* Clean previus content */
+        contactsList.innerHTML = "";
+
+        const value = event.target.value;
+        console.log(value);
+
+        /* Save last search with localStorage */
+        /* saveLastSearch(value); */
+
+        if (!value) {
+          renderContacts(contacts);
+          return;
+        }
+
+        const filteredContacts = contacts.filter((contact) =>
+          contact.name.toLowerCase().includes(value.toLowerCase())
+        );
+
+        if (filteredContacts.length === 0) {
+          const paragraph = document.createElement("p");
+          paragraph.innerHTML = `
+            No encontramos nada para: <strong>${value}</strong>
+          `;
+          contactsList.appendChild(paragraph);
+          return;
+        }
+
+        renderContacts(filteredContacts);
+      });
+
+      /**
+       *
+       * About localStorage
+       * Documentation:
+       *     https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+       *
+       * Agregar elemento:
+             window.localStorage.setItem("miNombre", "Angelito")
+       * Acceder a un elemento:
+            window.localStorage.getItem("miNombre")
+       */
+
+      function saveLastSearch(value) {
+        window.localStorage.setItem("lastSearch", value);
+      }
+
+      function getLastSearch() {
+        return window.localStorage.getItem("lastSearch") || "";
+      }
+
+      /* copy-paste */
+      function updateElementStyles(query, styles = {}) {
+        const elements = document.querySelectorAll(query);
+
+        elements.forEach((el, index) => {
+          Object.keys(styles).forEach((propertyName) => {
+            el.style[propertyName] = styles[propertyName];
+          });
+        });
+      }
+
+      function printLastSearch() {
+        const header = document.querySelector(".Container .Header");
+        const lastSearch = getLastSearch();
+
+        if (lastSearch) {
+          const span = document.createElement("span");
+          span.innerHTML = `
+            <p style="margin: 0 0 1rem">
+              <small>
+                Última búsqueda <strong>${lastSearch}</strong>
+              </small>
+            </p>
+          `;
+
+          updateElementStyles('.Header .Header--Searches', { margin: '0' })
+
+          header.appendChild(span);
+        }
+      }
+
+      printLastSearch();
+    </script>
+  </body>
+</html>

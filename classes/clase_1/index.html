@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 1</title>
+  </head>
+  <body>
+    <script>
+      /*
+       * Clase 1
+       */
+
+      /**
+       *
+       * Arrays
+       *
+       * Documentation:
+       * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+       *
+       * Simple definition:
+       *    A collection of elements each identified by at least one array index.
+       *
+       * Creation:
+       *    By [] notation or by its constructor new Array()
+       *
+       * Access to some element by its index:
+       *    const myArray = [1, 2, 3]
+       *    myArray[0] -> 1
+       *    myArray[1] -> 2
+       *    myArray[2] -> 3
+       *
+       */
+
+      const numbers = [1, 2, 3, 4, 5, 6];
+      const chars = ["a", "b", "c", "d", "e"];
+
+      const supermarketList = [
+        { count: 1, name: "Cookies", price: 20 },
+        { count: 1, name: "Milk", price: 19 },
+        { count: 1, name: "Candies", price: 10 },
+        { count: 1, name: "Chocolate", price: 23 },
+        { count: 1, name: "Bread", price: 35 },
+        { count: 1, name: "Rice", price: 24 },
+        { count: 1, name: "Salmon", price: 200 },
+        { count: 1, name: "Butter", price: 10 },
+        { count: 1, name: "Eggs", price: 70 },
+        { count: 1, name: "Soup", price: 12 },
+      ];
+
+      /*
+       * for of
+       */
+
+      /* Iterate over simple arrays */
+
+      // for (var number of numbers) {
+      //   console.log("NUMBER", number)
+      // }
+
+      // for (var char of chars) {
+      //   console.log("CHAR", char)
+      // }
+
+      /* howMuchIsIt using for of */
+
+      function howMuchIsIt(list) {
+        let total = 0;
+
+        for (const item of list) {
+          console.log(item);
+          total = total + item.price * item.count;
+        }
+
+        return total;
+      }
+
+      const total = howMuchIsIt(supermarketList);
+      console.log("Total: ", total);
+
+      /*
+       * -------------------------------------------------------------------------------
+       */
+
+      /*
+       * forEach
+       */
+
+      /* howMuchIsIt2 using forEach */
+
+      function howMuchIsIt2(list) {
+        let total = 0;
+
+        list.forEach(function (item, index) {
+          console.log(index, item);
+          total = total + item.price * item.count;
+        });
+
+        return total;
+      }
+
+      const total2 = howMuchIsIt2(supermarketList);
+      console.log("Total 2: ", total2);
+
+      /*
+       * -------------------------------------------------------------------------------
+       */
+
+      /*
+       * Map
+       *
+       * Documentation:
+       *    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+       */
+
+      console.log("----------------- CLASS MAP -------------------");
+
+      function shoppingForManyPeople(list, peopleCount) {
+        const newList = list.map(function (item, index) {
+          return {
+            count: peopleCount,
+            name: item.name,
+            price: item.price,
+          };
+        });
+
+        console.log("newList: ", newList);
+
+        return newList;
+      }
+
+      const newSupermarketList = shoppingForManyPeople(supermarketList, 10);
+      console.log("Original super market list", supermarketList);
+      console.log("\n");
+      console.log("New super markert list", newSupermarketList);
+
+      const total3 = howMuchIsIt(newSupermarketList);
+      console.log("Total3: ", total3);
+
+      /*
+       * -------------------------------------------------------------------------------
+       */
+
+      /*
+       * Filter
+       */
+
+      function whichProductCanIBuy(list, myMoney) {
+        const newList = list.filter(function (item) {
+          return item.price <= myMoney;
+        });
+
+        return newList;
+      }
+
+      const iCanBuyOneOfThis = whichProductCanIBuy(supermarketList, 40);
+      console.log("iCanBuyOneOfThis", iCanBuyOneOfThis);
+
+      /*
+       * Find
+       */
+
+      function listHasThis(list, myProduct) {
+        const productFouned = list.find(function (item) {
+          return item.name === myProduct;
+        });
+
+        if (productFouned) {
+          console.log("Si hay", productFouned);
+          return true;
+        }
+
+        console.log("No hay", myProduct);
+        return false;
+      }
+
+      const isThereChocolate = listHasThis(supermarketList, "Chocolate");
+      console.log("isThereChocolate: ", isThereChocolate);
+
+      const isThereMilk = listHasThis(supermarketList, "Milk");
+      console.log("isThereMilk: ", isThereMilk);
+
+      const isThereCajeta = listHasThis(supermarketList, "Cajeta");
+      console.log("isThereCajeta: ", isThereCajeta);
+    </script>
+  </body>
+</html>
