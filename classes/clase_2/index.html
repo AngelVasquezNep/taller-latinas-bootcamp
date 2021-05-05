@@ -223,9 +223,8 @@
        */
 
       /**
-       * DOM Manipulation
        *
-       * UTILS
+       * DOM Manipulation
        *
        */
 
@@ -242,17 +241,22 @@
       // changeBorderColor("Angelito", "tomato", "10px")
       // changeBorderColor("Angelito_2", "skyblue", "8px", "dashed")
 
-      // Explicar cómo acceder a un objeto através de su nombre
-
-      // misEstilos.border
-      // "10px solid tomato"
-      // misEstilos["border"]
-      // "10px solid tomato"
-      // misEstilos["borderBottomColor"]
-      // "yellow"
-      // misEstilos[1]
-      // undefined
-      // misEstilos.1
+      /*
+       * Property accessors
+       * Provide access to an object's properties by using the dot notation or the bracket notation
+       *
+       * Documentation:
+       *      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors
+       *
+       * Example:
+       *      exampleStyles.border -> "10px solid tomato"
+       *      exampleStyles["border"] -> "10px solid tomato"
+       *      exampleStyles["borderBottomColor"] -> "yellow"
+       *
+       * Warning:
+       *      exampleStyles[1] -> undefined
+       *      exampleStyles.1  -> SyntaxError 
+       */
 
       // Explicar Object.keys -> Primero hablar de los objetos globales
       // podemos poner como ejemplo Math.random()
@@ -264,7 +268,7 @@
       };
 
       function updateElementStyles(query, styles = {}) {
-        // INSERT DOCUMENTATION
+        // querySelectorAll documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
         const elements = document.querySelectorAll(query);
 
         elements.forEach((el, index) => {
@@ -273,6 +277,7 @@
           console.log("-----------------------------------");
 
           const nombreDeLosEstilos = Object.keys(styles);
+          console.log("nombreDeLosEstilos", nombreDeLosEstilos)
 
           nombreDeLosEstilos.forEach((styleName) => {
             console.log("styleName: ", styleName);
@@ -286,7 +291,7 @@
         });
       }
 
-      updateElementStyles(".Contacts .Contact", exampleStyles);
+      // updateElementStyles(".Contacts .Contact", exampleStyles);
 
       /** ---------------------------------------------------------------------
        *
@@ -304,7 +309,7 @@
       };
 
       function keydownHandler(event) {
-        // classList - https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+        // classList documentation - https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
 
         console.log(event);
 

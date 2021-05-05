@@ -1,7 +1,15 @@
-// Asincronismo
-// Manejador de eventos - Event Loop
-// Call stack
-// Navegador
+/**
+ * 
+ * Clase 4
+ * 
+ * Asincronismo
+ * Manejador de eventos - Event Loop
+ * Call stack
+ * Navegador
+ * Anatomía de los Requests
+ * 
+ */
+
 
 /**
  * Síncrono - Hacer las compras

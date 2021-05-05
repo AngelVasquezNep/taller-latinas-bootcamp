@@ -224,11 +224,12 @@
 
       /*
        *
-       * DATOS FAKE
+       * Arrays, DOM manipulation and LocalStorage
        *
        */
 
       /**
+       * DATOS FAKE
        * "Rick and Morty characters"
        * API documentation https://rickandmortyapi.com
        */
@@ -826,11 +827,25 @@
 
       /* copy-paste */
       function updateElementStyles(query, styles = {}) {
+        // querySelectorAll documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
         const elements = document.querySelectorAll(query);
 
         elements.forEach((el, index) => {
-          Object.keys(styles).forEach((propertyName) => {
-            el.style[propertyName] = styles[propertyName];
+          console.log("El elemento " + index);
+          console.log(el);
+          console.log("-----------------------------------");
+
+          const nombreDeLosEstilos = Object.keys(styles);
+          console.log("nombreDeLosEstilos", nombreDeLosEstilos)
+
+          nombreDeLosEstilos.forEach((styleName) => {
+            console.log("styleName: ", styleName);
+            console.log("Value: ", styles[styleName]);
+
+            el.style[styleName] = styles[styleName];
+            // el.style.border = styles.border
+            // el.style.borderBottomColor = styles.borderBottomColor
+            // el.style.marginBottom = styles.marginBottom
           });
         });
       }
@@ -840,8 +855,8 @@
         const lastSearch = getLastSearch();
 
         if (lastSearch) {
-          const span = document.createElement("span");
-          span.innerHTML = `
+          const div = document.createElement("div");
+          div.innerHTML = `
             <p style="margin: 0 0 1rem">
               <small>
                 Última búsqueda <strong>${lastSearch}</strong>
@@ -851,7 +866,7 @@
 
           updateElementStyles('.Header .Header--Searches', { margin: '0' })
 
-          header.appendChild(span);
+          header.appendChild(div);
         }
       }
 
