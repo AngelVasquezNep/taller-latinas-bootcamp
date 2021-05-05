@@ -7,40 +7,20 @@ To achieve this goal we are goint to build a simple agenda and then, connect wit
 
 ---
 
+## DEMO
+
+[taller-latinas-bootcamp](https://angelvasqueznep.github.io/taller-latinas-bootcamp/)
+
 ## Steps
 
-<details>
-  <summary>
-    Day 1 (1 / 2):
-  </summary>
-  <p>
-    In progress...
-  </p>
-</details>
+- Day 1 (1 / 2):
+  Arrays
 
-<details>
-  <summary>
-    Day 1 (2 / 2):
-  </summary>
-  <p>
-    In progress...
-  </p>
-</details>
+- Day 1 (2 / 2):
+  DOM Manipulation
 
-<details>
-  <summary>
-    Day 2 (1 / 2):
-  </summary>
-  <p>
-    In progress...
-  </p>
-</details>
+- Day 2 (1 / 2):
+  Arrays, DOM manipulation and LocalStorage
 
-<details>
-  <summary>
-    Day 1 (2 / 2):
-  </summary>
-  <p>
-    In progress...
-  </p>
-</details>
+- Day 1 (2 / 2):
+  Asynchronism

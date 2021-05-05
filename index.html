@@ -291,6 +291,7 @@
       // const contacts = transformRawContacts(rawContacts);
 
       // renderContacts(contacts);
+      let contacts = []
 
       const headerSearch = document.getElementById("header-search");
 
@@ -432,7 +433,7 @@
           }
           contactsList.innerHTML = "";
 
-          const contacts = transformRawContacts(data.results);
+          contacts = transformRawContacts(data.results);
           renderContacts(contacts);
         }
 
