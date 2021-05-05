@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clase 2</title>
+    <title>Latinas Bootcamp</title>
 
     <style>
       * {
@@ -226,89 +226,142 @@
     </div>
 
     <script>
-      /*
-       * Clase 2
-       */
+      function transformRawContacts(rawContacts) {
+        const contacts = rawContacts.map((contact) => {
+          return {
+            id: `contact_${contact.id}`,
+            img: contact.image,
+            name: contact.name,
+            email: contact.name.replace(/ /g, "") + "@test.com",
+            phone: 5544449999,
+          };
+        });
 
-      /**
-       *
-       * DOM Manipulation
-       *
-       */
-
-      function changeBorderColor(id, color = "red", borderWidth, borderStyle) {
-        const el = document.getElementById(id);
-
-        console.log(el.style);
-
-        el.style.borderColor = color;
-        el.style.borderWidth = borderWidth || "2px";
-        el.style.borderStyle = borderStyle || "solid";
+        return contacts;
       }
 
-      // changeBorderColor("Angelito", "tomato", "10px")
-      // changeBorderColor("Angelito_2", "skyblue", "8px", "dashed")
+      function contactTemplate(contact) {
+        return `
+        <section class="Contact" id="${contact.id}">
+          <picture class="Contact--image">
+            <img
+              src="${contact.img}"
+              alt="${contact.name}"
+              height="5rem"
+              width="5rem"
+            />
+            <figcaption class="Contact--name">${contact.name}</figcaption>
+          </picture>
+    
+          <div class="Contact--details">
+            <a class="Contact--details-link" href="tel:${contact.phone}">
+              ${contact.phone}
+            </a>
+            <a class="Contact--details-link" href="mailto:${contact.email}">
+              ${contact.email}
+            </a>
+          </div>
+        </section>
+      `;
+      }
 
-      /*
-       * Property accessors
-       * Provide access to an object's properties by using the dot notation or the bracket notation
-       *
-       * Documentation:
-       *      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors
-       *
-       * Example:
-       *      exampleStyles.border -> "10px solid tomato"
-       *      exampleStyles["border"] -> "10px solid tomato"
-       *      exampleStyles["borderBottomColor"] -> "yellow"
-       *
-       * Warning:
-       *      exampleStyles[1] -> undefined
-       *      exampleStyles.1  -> SyntaxError 
-       */
+      function createContactElement(contact) {
+        const div = document.createElement("div");
+        const contactTemplateString = contactTemplate(contact);
+        div.innerHTML = contactTemplateString;
+        const contactElement = div.firstElementChild;
 
-      // Explicar Object.keys -> Primero hablar de los objetos globales
-      // podemos poner como ejemplo Math.random()
+        return contactElement;
+      }
 
-      const exampleStyles = {
-        border: "10px solid tomato",
-        borderBottomColor: "yellow",
-        marginBottom: "50px",
-      };
+      const ContactsDiv = document.querySelector(".Contacts");
+
+      const contactsList = document.querySelector(".Contacts");
+
+      function renderContacts(contacts) {
+        contacts.forEach((contact) => {
+          const contactElement = createContactElement(contact);
+          contactsList.appendChild(contactElement);
+        });
+      }
+
+      // I'm going to get "contacts" using fetch
+      // See the code at bottom
+
+      // const contacts = transformRawContacts(rawContacts);
+
+      // renderContacts(contacts);
+
+      const headerSearch = document.getElementById("header-search");
+
+      headerSearch.addEventListener("input", (event) => {
+        contactsList.innerHTML = "";
+        const value = event.target.value;
+        saveLastSearch(value);
+
+        if (!value) {
+          renderContacts(contacts);
+          return;
+        }
+
+        const filteredContacts = contacts.filter((contact) =>
+          contact.name.toLowerCase().includes(value.toLowerCase())
+        );
+
+        if (filteredContacts.length === 0) {
+          const paragraph = document.createElement("p");
+          paragraph.innerHTML = `
+            No encontramos nada para: <strong>${value}</strong>
+          `;
+          contactsList.appendChild(paragraph);
+          return;
+        }
+
+        renderContacts(filteredContacts);
+      });
+
+      function saveLastSearch(value) {
+        window.localStorage.setItem("lastSearch", value);
+      }
+
+      function getLastSearch() {
+        return window.localStorage.getItem("lastSearch") || "";
+      }
 
       function updateElementStyles(query, styles = {}) {
-        // querySelectorAll documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
         const elements = document.querySelectorAll(query);
 
         elements.forEach((el, index) => {
-          console.log("El elemento " + index);
-          console.log(el);
-          console.log("-----------------------------------");
-
-          const nombreDeLosEstilos = Object.keys(styles);
-          console.log("nombreDeLosEstilos", nombreDeLosEstilos)
-
-          nombreDeLosEstilos.forEach((styleName) => {
-            console.log("styleName: ", styleName);
-            console.log("Value: ", styles[styleName]);
-
+          Object.keys(styles).forEach((styleName) => {
             el.style[styleName] = styles[styleName];
-            // el.style.border = styles.border
-            // el.style.borderBottomColor = styles.borderBottomColor
-            // el.style.marginBottom = styles.marginBottom
           });
         });
       }
 
-      // updateElementStyles(".Contacts .Contact", exampleStyles);
+      function printLastSearch() {
+        const header = document.querySelector(".Container .Header");
+        const lastSearch = getLastSearch();
 
-      /** ---------------------------------------------------------------------
-       *
-       * Make fale dark mode
-       *
-       */
+        if (lastSearch) {
+          const div = document.createElement("div");
+          div.innerHTML = `
+            <p style="margin: 0 0 1rem">
+              <small>
+                Última búsqueda <strong>${lastSearch}</strong>
+              </small>
+            </p>
+          `;
+
+          updateElementStyles(".Header .Header--Searches", { margin: "0" });
+
+          header.appendChild(div);
+        }
+      }
+
+      printLastSearch();
 
       const appContainer = document.getElementById("app");
-    
+
       const KEY_CODES = {
         D: 68,
         L: 76,
@@ -323,14 +376,14 @@
 
         if (event.keyCode === KEY_CODES.D) {
           // Make dark mode
-          appContainer.classList.add('Fake-dark-mode')
-          appContainer.classList.remove('Fake-light-mode')
+          appContainer.classList.add("Fake-dark-mode");
+          appContainer.classList.remove("Fake-light-mode");
         }
 
         if (event.keyCode === KEY_CODES.L) {
           // Remove dark mode
-          appContainer.classList.add('Fake-light-mode')
-          appContainer.classList.remove('Fake-dark-mode')
+          appContainer.classList.add("Fake-light-mode");
+          appContainer.classList.remove("Fake-dark-mode");
         }
 
         if (event.keyCode === KEY_CODES.G) {
@@ -339,7 +392,7 @@
             border: "2px solid green",
           });
         }
- 
+
         if (event.keyCode === KEY_CODES.C) {
           // Clean
           updateElementStyles(".Contacts .Contact", {
@@ -349,6 +402,47 @@
       }
 
       document.addEventListener("keydown", keydownHandler);
+
+      function getDataFromUrlAPI(url, handleRequestData) {
+        fetch(url)
+          .then((res) => res.json())
+          .then((json) => {
+            console.log({ json });
+
+            if (handleRequestData) {
+              handleRequestData(null, json);
+            }
+          })
+          .catch((error) => {
+            console.error("Hubo un error: ", error);
+
+            if (handleRequestData) {
+              handleRequestData(error);
+            }
+          });
+      }
+
+      function getRickAndMorthCharacters() {
+        contactsList.innerHTML = "Cargando...";
+
+        function handleRequestData(error, data) {
+          if (error) {
+            contactsList.innerHTML = "No obtuvimos los personajes";
+            return;
+          }
+          contactsList.innerHTML = "";
+
+          const contacts = transformRawContacts(data.results);
+          renderContacts(contacts);
+        }
+
+        getDataFromUrlAPI(
+          "https://rickandmortyapi.com/api/character",
+          handleRequestData
+        );
+      }
+
+      getRickAndMorthCharacters();
     </script>
   </body>
 </html>
