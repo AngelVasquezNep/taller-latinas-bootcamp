@@ -33,10 +33,10 @@
        *
        */
 
-      const numbers = [1, 2, 3, 4, 5, 6];
-      const chars = ["a", "b", "c", "d", "e"];
+      let numbers = [1, 2, 3, 4, 5, 6];
+      let chars = ["a", "b", "c", "d", "e"];
 
-      const supermarketList = [
+      let supermarketList = [
         { count: 1, name: "Cookies", price: 20 },
         { count: 1, name: "Milk", price: 19 },
         { count: 1, name: "Candies", price: 10 },
@@ -76,7 +76,7 @@
         return total;
       }
 
-      const total = howMuchIsIt(supermarketList);
+      let total = howMuchIsIt(supermarketList);
       console.log("Total: ", total);
 
       /*
@@ -100,7 +100,7 @@
         return total;
       }
 
-      const total2 = howMuchIsIt2(supermarketList);
+      let total2 = howMuchIsIt2(supermarketList);
       console.log("Total 2: ", total2);
 
       /*
@@ -130,12 +130,12 @@
         return newList;
       }
 
-      const newSupermarketList = shoppingForManyPeople(supermarketList, 10);
+      let newSupermarketList = shoppingForManyPeople(supermarketList, 10);
       console.log("Original super market list", supermarketList);
       console.log("\n");
       console.log("New super markert list", newSupermarketList);
 
-      const total3 = howMuchIsIt(newSupermarketList);
+      let total3 = howMuchIsIt(newSupermarketList);
       console.log("Total3: ", total3);
 
       /*
@@ -154,7 +154,7 @@
         return newList;
       }
 
-      const iCanBuyOneOfThis = whichProductCanIBuy(supermarketList, 40);
+      let iCanBuyOneOfThis = whichProductCanIBuy(supermarketList, 40);
       console.log("iCanBuyOneOfThis", iCanBuyOneOfThis);
 
       /*
@@ -175,13 +175,13 @@
         return false;
       }
 
-      const isThereChocolate = listHasThis(supermarketList, "Chocolate");
+      let isThereChocolate = listHasThis(supermarketList, "Chocolate");
       console.log("isThereChocolate: ", isThereChocolate);
 
-      const isThereMilk = listHasThis(supermarketList, "Milk");
+      let isThereMilk = listHasThis(supermarketList, "Milk");
       console.log("isThereMilk: ", isThereMilk);
 
-      const isThereCajeta = listHasThis(supermarketList, "Cajeta");
+      let isThereCajeta = listHasThis(supermarketList, "Cajeta");
       console.log("isThereCajeta: ", isThereCajeta);
     </script>
   </body>

@@ -1,19 +1,20 @@
 /**
  * 
- * Clase 4
+ * Class 4
  * 
- * Asincronismo
- * Manejador de eventos - Event Loop
- * Call stack
- * Navegador
- * Anatomía de los Requests
+ * Asynchronism
+ *    Handle events - Event Loop
+ *    Call stack
+ *    Browser
+ * Request example (with XMLHttpRequest)
+ * Request anatomy stylesheet (request.md)
+ * Talk about fetch_example.js
  * 
  */
 
 
 /**
  * Síncrono - Hacer las compras
-
       console.log("Ir a super")
       console.log("Elegir los productos")
       console.log("Ir a la caja")
@@ -36,15 +37,6 @@
         console.log("Torta de pastor")
       }, 1200)
  */
-
-/**
- * 
- * Explicar el archivo Request.md
- * Request documentation:
- *    https://developer.mozilla.org/en-US/docs/Web/HTTP
- * 
- */
-
 
 /*
  * AJAX - Asynchronous JavaScript And XML
@@ -88,3 +80,12 @@ xhr.onprogress = function (event) {
 xhr.onerror = function () {
   console.error("Request failed");
 };
+
+
+/**
+ * 
+ * Explicar el archivo Request.md
+ * Request documentation:
+ *    https://developer.mozilla.org/en-US/docs/Web/HTTP
+ * 
+ */

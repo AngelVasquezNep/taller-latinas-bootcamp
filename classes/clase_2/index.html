@@ -228,11 +228,35 @@
     <script>
       /*
        * Clase 2
+       * 
+       * DOM Events
+       * DOM Manipulation
+       * LocalStorage
+       *
        */
 
       /**
        *
-       * DOM Manipulation
+       * DOM Events
+       *
+       * Youtube video: An Introduction to DOM Events with JavaScript
+       *        https://www.youtube.com/watch?v=QE1YQnhntgw
+       *
+       *
+       * Documentation:
+       *        https://developer.mozilla.org/en-US/docs/Web/Events
+       *
+       *
+       * Type of events:
+       *       - Mouse events
+       *           - mousemove → show position
+       *       - Keyboard events
+       *           - keypress
+       *       - Form events
+       *       - Media events
+       *       - Drag and drops events
+       *       - Window events
+       *       - More...
        *
        */
 
@@ -250,71 +274,40 @@
       // changeBorderColor("Angelito_2", "skyblue", "8px", "dashed")
 
       /*
-       * Property accessors
-       * Provide access to an object's properties by using the dot notation or the bracket notation
        *
-       * Documentation:
-       *      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors
+       * See changeAllStyles.js file
+       * There is a function to change ANY CSS property from one or many elements at the same time
        *
-       * Example:
-       *      exampleStyles.border -> "10px solid tomato"
-       *      exampleStyles["border"] -> "10px solid tomato"
-       *      exampleStyles["borderBottomColor"] -> "yellow"
-       *
-       * Warning:
-       *      exampleStyles[1] -> undefined
-       *      exampleStyles.1  -> SyntaxError 
        */
 
-      // Explicar Object.keys -> Primero hablar de los objetos globales
-      // podemos poner como ejemplo Math.random()
-
-      const exampleStyles = {
-        border: "10px solid tomato",
-        borderBottomColor: "yellow",
-        marginBottom: "50px",
-      };
-
-      function updateElementStyles(query, styles = {}) {
-        // querySelectorAll documentation: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
-        const elements = document.querySelectorAll(query);
-
-        elements.forEach((el, index) => {
-          console.log("El elemento " + index);
-          console.log(el);
-          console.log("-----------------------------------");
-
-          const nombreDeLosEstilos = Object.keys(styles);
-          console.log("nombreDeLosEstilos", nombreDeLosEstilos)
-
-          nombreDeLosEstilos.forEach((styleName) => {
-            console.log("styleName: ", styleName);
-            console.log("Value: ", styles[styleName]);
-
-            el.style[styleName] = styles[styleName];
-            // el.style.border = styles.border
-            // el.style.borderBottomColor = styles.borderBottomColor
-            // el.style.marginBottom = styles.marginBottom
-          });
-        });
-      }
-
-      // updateElementStyles(".Contacts .Contact", exampleStyles);
 
       /** ---------------------------------------------------------------------
        *
-       * Make fale dark mode
+       * Fake dark mode
        *
        */
 
       const appContainer = document.getElementById("app");
+      let darkeModeIsActive = false
     
+      // ASCII CODES
+      //    Documentation: https://techterms.com/definition/ascii
       const KEY_CODES = {
         D: 68,
         L: 76,
         G: 71,
         C: 67,
       };
+
+      function toggleDarkMode(darkeModeIsActive) {
+        if (darkeModeIsActive) {
+          appContainer.classList.add('Fake-dark-mode')
+          appContainer.classList.remove('Fake-light-mode')
+        } else {
+          appContainer.classList.add('Fake-light-mode')
+          appContainer.classList.remove('Fake-dark-mode')
+        }
+      }
 
       function keydownHandler(event) {
         // classList documentation - https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
@@ -323,32 +316,59 @@
 
         if (event.keyCode === KEY_CODES.D) {
           // Make dark mode
-          appContainer.classList.add('Fake-dark-mode')
-          appContainer.classList.remove('Fake-light-mode')
+          darkeModeIsActive = true
+          // saveDarkeModeIsActive(1)
+          toggleDarkMode(darkeModeIsActive)
         }
 
         if (event.keyCode === KEY_CODES.L) {
           // Remove dark mode
-          appContainer.classList.add('Fake-light-mode')
-          appContainer.classList.remove('Fake-dark-mode')
+          darkeModeIsActive = false
+          // saveDarkeModeIsActive(0)
+          toggleDarkMode(darkeModeIsActive)
         }
 
         if (event.keyCode === KEY_CODES.G) {
           // Green Border
-          updateElementStyles(".Contacts .Contact", {
-            border: "2px solid green",
-          });
+          changeBorderColor("Angelito", "green")
+          changeBorderColor("Angelito_2", "green")
         }
  
         if (event.keyCode === KEY_CODES.C) {
           // Clean
-          updateElementStyles(".Contacts .Contact", {
-            border: "initial",
-          });
+          changeBorderColor("Angelito", "initial", "0px")
+          changeBorderColor("Angelito_2", "initial", "0px")
         }
       }
 
       document.addEventListener("keydown", keydownHandler);
+
+
+
+     /**
+       *
+       * About localStorage
+       * Documentation:
+       *     https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+       *
+       * Agregar elemento:
+             window.localStorage.setItem("miNombre", "Angelito")
+       * Acceder a un elemento:
+            window.localStorage.getItem("miNombre")
+       */
+
+      // function saveDarkeModeIsActive(value) {
+      //   window.localStorage.setItem("darkeModeIsActive", value);
+      // }
+
+      // function getDarkeModeIsActive() {
+      //   const darkModeNumber = window.localStorage.getItem("darkeModeIsActive")
+      //   console.log("getDarkeModeIsActive", darkModeNumber, Number(darkModeNumber) > 0)
+      //   return Number(darkModeNumber) > 0;
+      // }
+
+      // darkeModeIsActive = getDarkeModeIsActive()
+      // toggleDarkMode(darkeModeIsActive)
     </script>
   </body>
 </html>
