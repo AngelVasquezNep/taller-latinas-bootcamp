@@ -635,7 +635,7 @@
         * Template literals (backticks)
         * documentation: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
         *
-        * Example:
+        * Simple Example:
             function sayHi(name) {
               console.log(`Hi ${name}`)                     // Using template literals
               console.log('Hi ' + name)                     // Without template literals
@@ -647,6 +647,11 @@
 
             sayHi("Angelito")
             saySumResult(3, 5)
+
+          Create template like HTML:
+            function createParagraph(name) {
+              return `<p>Hi <strong>${name}</strong></p>`
+            }
         *
         * 
         * 
@@ -756,36 +761,6 @@
        */
 
       /**
-       *
-       * Insert nodes at DOM tree, examples
-       *
-       */
-
-      /* Get section.Contacts element*/
-      const ContactsDiv = document.querySelector(".Contacts");
-      console.log(ContactsDiv);
-
-      /* Create a simple tag p with content */
-      const p = document.createElement("p");
-      p.innerText = "Hola";
-
-      ContactsDiv.appendChild(p);
-
-      /**
-       * Can I insert a div with HTML content?
-       */
-
-      const simpleDiv = document.createElement("div");
-      /* Template literals: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals */
-      simpleDiv.innerHTML = `
-        <p>
-          <strong>HOLA...</strong> :D
-        </p>
-      `;
-
-      ContactsDiv.appendChild(simpleDiv);
-
-      /**
        * Add Contacts from list
        */
 
@@ -801,7 +776,7 @@
 
       const contacts = transformRawContacts(rawContacts);
 
-      renderContacts(contacts);
+      // renderContacts(contacts);
 
       /**
        * Filter Names - Arrays and DOM manipulation
@@ -809,33 +784,33 @@
 
       const headerSearch = document.getElementById("header-search");
 
-      headerSearch.addEventListener("input", (event) => {
-        /* Clean previus content */
-        contactsList.innerHTML = "";
+      // headerSearch.addEventListener("input", (event) => {
+      //   /* Clean previus content */
+      //   contactsList.innerHTML = "";
 
-        const value = event.target.value;
-        console.log(value);
+      //   const value = event.target.value;
+      //   console.log(value);
 
-        if (!value) {
-          renderContacts(contacts);
-          return;
-        }
+      //   if (!value) {
+      //     renderContacts(contacts);
+      //     return;
+      //   }
 
-        const filteredContacts = contacts.filter((contact) =>
-          contact.name.toLowerCase().includes(value.toLowerCase())
-        );
+      //   const filteredContacts = contacts.filter((contact) =>
+      //     contact.name.toLowerCase().includes(value.toLowerCase())
+      //   );
 
-        if (filteredContacts.length === 0) {
-          const paragraph = document.createElement("p");
-          paragraph.innerHTML = `
-            No encontramos nada para: <strong>${value}</strong>
-          `;
-          contactsList.appendChild(paragraph);
-          return;
-        }
+      //   if (filteredContacts.length === 0) {
+      //     const paragraph = document.createElement("p");
+      //     paragraph.innerHTML = `
+      //       No encontramos nada para: <strong>${value}</strong>
+      //     `;
+      //     contactsList.appendChild(paragraph);
+      //     return;
+      //   }
 
-        renderContacts(filteredContacts);
-      });
+      //   renderContacts(filteredContacts);
+      // });
     </script>
   </body>
 </html>
