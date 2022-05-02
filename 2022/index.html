@@ -200,8 +200,79 @@ mi_pais = prompt("¿De dónde eres?");
 
 "Hola, soy " + mi_nombre
 + " tengo " + mi_edad
-+ " y soy de " + mi_pais</pre>
++ " y soy de " + mi_pais</pre
+                >
                 <!-- Convertir edad a número -->
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="columns">
+          <div class="column">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-header-title">Condicionales</div>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <p>
+                    Los programas necesitan "tomar decisiones" y saber qué hacer
+                    en diferentes casos.
+                  </p>
+                  <p>Para ello contamos con:</p>
+                  <ul>
+                    <li><code>if</code></li>
+                    <li><code>else if</code></li>
+                    <li><code>else</code></li>
+                  </ul>
+
+                  <p>
+                    <code>if</code> y <code>else if</code>
+                    <strong>EVALUAN</strong> sí una expresión es cierta
+                    (<code>true</code>) o false (<code>false</code>)
+                  </p>
+                  <p>Se usan de la siguiente forma</p>
+
+                  <pre>
+  mi_numero_en_string = prompt("Elije un número");
+  mi_numero = Number(mi_numero_en_string);
+
+  if (mi_numero < 10) {
+    console.log("Es un número pequeño");
+  } else if (mi_numero < 100) {
+    console.log("Es un número mediano");
+  } else {
+    console.log("Es un número grande");
+  }
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <details class="card">
+              <summary class="card-header">
+                <div class="card-header-title">¿Qué puedo hacer con esto?</div>
+              </summary>
+              <div class="card-content">
+                Guardar secretos:
+                    <pre>
+mi_codigo = "1234";
+mi_secreto = "Me gusta abrazar perritos";
+codigo_secreto = prompt("Ingresa el código");
+
+// console.log("codigo_secreto", codigo_secreto)
+// console.log("mi_codigo", mi_codigo)
+// console.log("Son iguales", codigo_secreto === mi_codigo)
+
+if (codigo_secreto === mi_codigo) {
+  console.log("Te contaré mi secreto");
+  console.log(mi_secreto);
+} else {
+  console.log("No...")
+}
+</pre>
               </div>
             </details>
           </div>
