@@ -5,7 +5,7 @@ en tecnología.
 
 Muy orgulloso de poder apoyar 💜
 
-## Contenido
+## Contenido
 
 ### 2021
 
@@ -14,7 +14,7 @@ Muy orgulloso de poder apoyar 💜
 - Arrays, DOM manipulation and LocalStorage
 - Asynchronism
 
-### 2022
+### 2022
 - Tipos de datos
 - Operadores
 - Variables -> const - let
