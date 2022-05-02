@@ -68,19 +68,19 @@
           <div class="column">
             <details class="card">
               <summary class="card-header">
-                <div class="card-header-title">
-                  ¿Qué puedo hacer con esto?
-                </div>
+                <div class="card-header-title">¿Qué puedo hacer con esto?</div>
               </summary>
               <div class="card-content">
                 Sumar y restar:
                 <pre>
                   10 + 2;
-                  5 - 3;</pre>
+                  5 - 3;</pre
+                >
                 Multiplicar y dividir:
                 <pre>
                   10 * 2;
-                  5 / 10;</pre>
+                  5 / 10;</pre
+                >
                 Comparar números:
                 <pre>
                   3 > 1;
@@ -91,6 +91,9 @@
                 </pre>
                 Escribir mensajes:
                 <pre>"Hey, mami, ¡soy desarrolladora!"</pre>
+
+                Concatenar mensajes:
+                <pre>"Hola" + " "  + "soy Angelito"</pre>
               </div>
             </details>
 
@@ -110,9 +113,7 @@
 
             <details class="card">
               <summary class="card-header">
-                <div class="card-header-title">
-                  Tu turno 🪅
-                </div>
+                <div class="card-header-title">Tu turno 🪅</div>
               </summary>
               <div class="card-content">
                 <p>Calcula cuántos años tiene tu familia junta:</p>
@@ -121,6 +122,90 @@
             </details>
           </div>
         </div>
+
+        <section class="columns">
+          <div class="column">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-header-title">Variables</div>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <div class="message is-primary">
+                    <p class="message-body">
+                      Una variable es un <code>contenedor</code> para nuestros
+                      valores.
+                    </p>
+                  </div>
+
+                  <p>
+                    El nombre de una variable puede ser cualquier palabra, los
+                    números pueden formar parte del nombre siempre y cuando NO
+                    estén al principio (<code>holi123</code> es válido). También
+                    pueden incluir el símbolo de pesitos <code>$</code> o
+                    underscore <code>_</code> pero ningún otro signo de
+                    puntiación.
+                  </p>
+
+                  <p>
+                    No usar <code>ñ</code>, tildes, signos especiales
+                    <code>¿?, ¡!, &, %, #</code>
+                  </p>
+
+                  <p><strong>Ejemplos</strong></p>
+                  <ul class="list">
+                    <li><code>mi_nombre</code></li>
+                    <li><code>mi_peli_favorita</code></li>
+                    <li><code>$html</code></li>
+                    <li><code>texto_1</code></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <details class="card">
+              <summary class="card-header">
+                <div class="card-header-title">¿Qué puedo hacer con esto?</div>
+              </summary>
+              <div class="card-content">
+                Guardar información sobre mí:
+                <pre>
+mi_nombre = "Angelito";
+mi_edad = 29;
+mi_pais = "México";</pre
+                >
+              </div>
+            </details>
+
+            <hr />
+
+            <details class="card">
+              <summary class="card-header">
+                <div class="card-header-title">Pedir datos</div>
+              </summary>
+              <div class="card-content">
+                <p>
+                  Podemos pedir datos usando <br />
+                  <code>prompt("¿Cómo te llamas?")</code> y
+                  <strong>guardando</strong> el resultado en una variable.
+                </p>
+
+                <hr />
+                <p>Guardar información sobre mí:</p>
+                <pre>
+mi_nombre = prompt("¿Cómo te llamas?");
+mi_edad = prompt("¿Cuántos años tienes?");
+mi_pais = prompt("¿De dónde eres?");
+
+"Hola, soy " + mi_nombre
++ " tengo " + mi_edad
++ " y soy de " + mi_pais</pre>
+                <!-- Convertir edad a número -->
+              </div>
+            </details>
+          </div>
+        </section>
       </div>
     </section>
   </body>
