@@ -11,9 +11,9 @@
     />
     <style>
       .content ul {
-          list-style: disc outside;
-          margin-left: 2em;
-          margin-top: 1em;
+        list-style: disc outside;
+        margin-left: 2em;
+        margin-top: 1em;
       }
     </style>
   </head>
@@ -254,7 +254,7 @@ mi_pais = prompt("¿De dónde eres?");
   }
                   </pre>
 
-          <pre>
+                  <pre>
              ¿El número es menor de 10?
                          |
             ---------------------------
@@ -275,7 +275,8 @@ mi_pais = prompt("¿De dónde eres?");
                                       |
                                       |
                         "Es un número grande"
-          </pre>
+          </pre
+                  >
                 </div>
               </div>
             </div>
@@ -287,7 +288,7 @@ mi_pais = prompt("¿De dónde eres?");
               </summary>
               <div class="card-content">
                 Guardar secretos:
-                    <pre>
+                <pre>
 mi_codigo = "1234";
 mi_secreto = "Me gusta abrazar perritos";
 codigo_secreto = prompt("Ingresa el código");
@@ -302,11 +303,64 @@ if (codigo_secreto === mi_codigo) {
 } else {
   console.log("No...")
 }
-</pre>
+</pre
+                >
               </div>
             </details>
           </div>
         </section>
+
+        <div class="columns">
+          <div class="column">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-header-title">Loops</div>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <ul>
+                    <li><code>while</code></li>
+                    <li><code>for loops</code></li>
+                  </ul>
+
+                  <p>Estructura de un <code>while</code></p>
+                  <pre>
+          while( Aquí va una sentantencia verdadera o falsa ) {
+            MIENTRAS la sentencia se verdadera
+            se ejecutará este BLOQUE DE CÓDIGO
+          }
+                  </pre>
+                  <p>Ejemplo</p>
+                  <p>
+                    Nota: MIENTRAS <code>codigo_secreto</code> NO sea igual a
+                    <code>mi_codigo</code> seguiremos pidiendo el código correcto.
+                  </p>
+                  <pre>
+mi_codigo = "1234";
+mi_secreto = "Me gusta abrazar perritos";
+codigo_secreto = prompt("Ingresa el código");
+
+while(codigo_secreto !== mi_codigo) {
+  codigo_secreto = prompt("Error, intenta de nuevo");
+}
+console.log("Te contaré mi secreto");
+console.log(mi_secreto);
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <details class="card">
+              <summary class="card-header">
+                <div class="card-header-title">Tu turno 🪅</div>
+              </summary>
+              <div class="card-content">
+                <p>...</p>
+              </div>
+            </details>
+          </div>
+        </div>
       </div>
     </section>
   </body>
