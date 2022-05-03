@@ -9,6 +9,13 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css"
     />
+    <style>
+      .content ul {
+          list-style: disc outside;
+          margin-left: 2em;
+          margin-top: 1em;
+      }
+    </style>
   </head>
 
   <body>
@@ -246,6 +253,29 @@ mi_pais = prompt("¿De dónde eres?");
     console.log("Es un número grande");
   }
                   </pre>
+
+          <pre>
+             ¿El número es menor de 10?
+                         |
+            ---------------------------
+            |                         |
+            SI                        NO
+            |                         |
+    "Es un número pequeño"            |
+                                      |
+                        ---------------
+                        |
+            ¿El número es menor de 100?
+                        |
+            ---------------------------
+            |                         |
+            SI                        NO
+            |                         |
+    "Es un número mediano"            |
+                                      |
+                                      |
+                        "Es un número grande"
+          </pre>
                 </div>
               </div>
             </div>
