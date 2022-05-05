@@ -353,10 +353,29 @@ console.log(mi_secreto);
           <div class="column">
             <details class="card">
               <summary class="card-header">
-                <div class="card-header-title">Tu turno 🪅</div>
+                <div class="card-header-title">A jugar 🪅</div>
               </summary>
               <div class="card-content">
-                <p>...</p>
+                <p>Adivina el número</p>
+
+                <pre>
+numero_a_adivinar = parseInt(Math.random() * 20)
+
+numero_del_usuario_string = prompt("Ingresa el número");
+numero_del_usuario = Number(numero_del_usuario_string);
+
+while(numero_del_usuario !== numero_a_adivinar) {
+  if (numero_a_adivinar > numero_del_usuario) {
+    alert("El número a adivinar es más grande")
+  } else {
+    alert("El número a adivinar es más pequeño")
+  }
+  numero_del_usuario_string = prompt("Error, intenta de nuevo");
+  numero_del_usuario = Number(numero_del_usuario_string);
+}
+
+alert("Ganaste")
+                </pre>
               </div>
             </details>
           </div>
