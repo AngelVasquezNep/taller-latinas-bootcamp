@@ -23,6 +23,20 @@
       <div class="container">
         <h1 class="title is-1 has-text-weight-bold">JavaScript</h1>
 
+        <div class="notification is-primary">
+          <h2 class="title">Useful links</h2>
+          <ul>
+            <li>
+              <a
+                target="_blank"
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
+              >
+                JS Guide MDN
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <div class="columns">
           <div class="column">
             <div class="card">
@@ -378,6 +392,152 @@ alert("Ganaste")
                 </pre>
               </div>
             </details>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-header-title">Declarar - asignar variables</div>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <p>3 formas de declarar una variable</p>
+                  <ul>
+                    <li><code>var</code> NO USAR</li>
+                    <li><code>let</code> Usar si creemos que el valor puede cambiar</li>
+                    <li><code>const</code> Es un valor fijo NUNCA PUEDE CAMBIAR</li>
+                  </ul>
+
+                  <p>Al declarar una variable la "registramos" (como cuando nacemos y nos asignan un ID único)</p>
+                  <p>Por esa razón <strong>NO</strong> podemos declarar dos veces la misma variable (dentro del mismos scope - bloque de código)</p>
+                  <pre>
+// Declarar (con let)
+let mi_nombre;
+
+// Reasignar valor (con let)
+mi_nombre = "Angelito"
+
+---------------------------
+
+// Declarar y asignar (con let)
+let mi_nombre = "Angelito"
+
+---------------------------
+
+// Declarar y asignar (con const)
+const mi_nombre = "Angelito"
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-header-title">Operadores lógicos</div>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <ul>
+                    <li>
+                      AND → <code>&&</code> Todos los valores/expresiones deben ser verdaderos.
+                    </li>
+                    <li>
+                      OR → <code>||</code> Es verdadero sí uno de sus valores es verdadero.
+                    </li>
+                    <li>
+                      NOT → <code>!</code> Niega el valor -> Si es <code>true</code> pasa a <code>false</code> y viceversa.
+                    </li>
+                  </ul>
+                  <pre>
+const me_gustan_los_perritos = true
+const me_gustan_las_galletas = true
+const me_gustan_las_peliculas_de_terror = false
+
+if (me_gustan_los_perritos && me_gustan_las_galletas) {
+  console.log("Team perritos Y galletas")
+}
+
+if (me_gustan_las_peliculas_de_terror || me_gustan_las_galletas) {
+  console.log("Noche de pelis")
+}
+
+if (!me_gustan_los_perritos && !me_gustan_las_galletas) {
+  console.log("¿Todo bien?")
+}
+        
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-header-title">
+                  <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">
+                    Objetos
+                  </a>
+                </div>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <p>
+                    Es un  <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">
+                      Tipo de dato de JS
+                    </a> que guarda una colección <code>LLAVE</code> - <code>VALOR</code> para entidades/valores más complejos.
+                  </p>
+
+                  <pre>
+// Flujo normal
+let angelito_nombre = "Angelito"
+let angelito_edad = 29
+let angelito_pais = "México"
+let angelito_trabajo = "Dev"
+
+let verito_nombre = "Verito"
+let verito_edad = 35
+let verito_pais = "Argentina"
+let verito_trabajo = "QA"
+
+// Con Objetos
+
+let angelito = {
+  nombre: "Angelito",
+  edad: 29,
+  pais: "México",
+  trabajo: "Dev",
+}
+
+let verito = {
+  nombre: "Verito",
+  edad: 35,
+  pais: "Argentina",
+  trabajo: "Dev",
+}
+
+// Acceder/Usar valores
+angelito.nombre -> "Angelito"
+angelito["nombre"] -> "Angelito"
+
+verito.edad -> 35
+
+// Actualizar/Reasignar  valores
+
+verito.trabajo = "Dev Senior"
+
+                  </pre>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
